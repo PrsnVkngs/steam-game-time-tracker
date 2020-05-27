@@ -18,16 +18,14 @@ import java.io.IOException;
 
 
 public class FileProcessor {
-
-	String filePath;
 	
 	public FileProcessor(String filePath) {
 		
-		this.filePath = filePath;
+		cleanFile(filePath);
 		
 	}
 	
-	public boolean cleanFile() {
+	private void cleanFile(String filePath) {
 		try {
 			Scanner gameFile = new Scanner(new File(filePath));
 			
@@ -50,20 +48,16 @@ public class FileProcessor {
 					nLine = nLine.trim();
 					fw.write(nLine + "\n");
 				}
-				
-				
+			
 			}
 			fw.close();
 			
-			return true;
 		}
 		catch (FileNotFoundException e ) {
 			System.out.println("Please provide a valid file location.");
 			e.printStackTrace();
-			return false;
 		} catch (IOException e) {
 			e.printStackTrace();
-			return false;
 		}
 	}
 	
